@@ -1,0 +1,87 @@
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0 1rem;
+  background: #f9f9f9;
+  color: #333;
+}
+
+header, footer {
+  background: #2c3e50;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  margin: 0 1rem;
+}
+
+nav a {
+  color: #ecf0f1;
+  text-decoration: none;
+}
+
+h1, h2, h3 {
+  margin-top: 1.5rem;
+}
+
+/* Estilos para detalles y summaries */
+details {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: bold;
+  outline: none;
+}
+
+summary:hover {
+  color: #2980b9;
+}
+
+.content {
+  padding: 0.5rem 0 0 1rem;
+}
+
+/* Si se usa botón colapsable en lugar de <details> */
+.collapsible {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 0.75rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.collapsible:hover {
+  background-color: #ddd;
+}
+
+.collapsible.active {
+  background-color: #ccc;
+}
+
+.collapsible + .content-collapsible {
+  padding: 0 1rem;
+  display: none;
+  overflow: hidden;
+  background-color: #fafafa;
+}

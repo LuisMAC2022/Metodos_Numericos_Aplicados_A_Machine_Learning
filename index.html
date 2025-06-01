@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Manual de Métodos Numéricos y Machine Learning</title>
+  <!-- Enlazar hoja de estilos -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Manual de Métodos Numéricos y Machine Learning</h1>
+    <nav>
+      <ul>
+        <li><a href="#fundamentos">1. Fundamentos Matemáticos</a></li>
+        <li><a href="#regresion">2. Modelos Clásicos de Regresión</a></li>
+        <li><a href="#redes">3. Redes Neuronales</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Fundamentos Matemáticos -->
+    <section id="fundamentos">
+      <h2>1. Fundamentos Matemáticos y Métodos Auxiliares</h2>
+
+      <!-- 1.1 Interpolación de Lagrange -->
+      <article id="lagrange">
+        <h3>1.1 Interpolación de Lagrange</h3>
+        <p>
+          La interpolación de Lagrange permite estimar el valor de una función desconocida utilizando puntos conocidos. Utiliza polinomios que pasan exactamente por los puntos dados, generando una fórmula explícita fácilmente aplicable.
+        </p>
+        <!-- Bloque expandible para más detalles -->
+        <details>
+          <summary class="summary-btn">Ver más detalles</summary>
+          <div class="content">
+            <p>
+              Dados \(n+1\) puntos \((x_0,y_0),\dots,(x_n,y_n)\), el polinomio de Lagrange se define como:
+            </p>
+            <p>
+              \(L(x) = \sum_{j=0}^{n} y_j \cdot \ell_j(x)\), donde 
+              \(\displaystyle \ell_j(x) = \prod_{\substack{0 \le m \le n \\ m \neq j}} \frac{x - x_m}{x_j - x_m}\).
+            </p>
+            <p>
+              Este enfoque no requiere resolver un sistema de ecuaciones; en cambio, construye directamente el polinomio que interpola los puntos dados.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 1.2 Interpolación de Newton -->
+      <article id="newton">
+        <h3>1.2 Interpolación de Newton</h3>
+        <p>
+          El método de Newton facilita la interpolación mediante diferencias divididas, simplificando cálculos al añadir nuevos puntos sin necesidad de recalcular completamente el polinomio interpolador.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver fórmula y ejemplos</summary>
+          <div class="content">
+            <p>
+              El polinomio queda:
+              \(P_n(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + \dots + a_n(x - x_0)\cdots(x - x_{n-1})\),
+              donde cada \(a_k\) se calcula con diferencias divididas.
+            </p>
+            <p>
+              La ventaja radica en que, si se agrega un punto extra \((x_{n+1},y_{n+1})\), solo se requiere calcular la última diferencia dividida y extender el polinomio.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 1.3 Extrapolación de datos -->
+      <article id="extrapolacion">
+        <h3>1.3 Extrapolación de datos</h3>
+        <p>
+          La extrapolación estima valores fuera del rango de datos conocidos, usando modelos predictivos como regresión lineal simple y múltiple. Es importante que los datos presenten una relación lineal y se cuente con suficientes observaciones para obtener predicciones confiables.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver ejemplos de regresión</summary>
+          <div class="content">
+            <p>
+              Para regresión lineal simple:
+              \(\hat{y} = \beta_0 + \beta_1 x\). Se ajustan \(\beta_0, \beta_1\) minimizando la suma de cuadrados de los residuos.
+            </p>
+            <p>
+              Para regresión múltiple:
+              \(\hat{y} = \beta_0 + \beta_1 x_1 + \dots + \beta_p x_p\), donde se usa la matriz \(X\) de variables independientes y la vectorialización de los coeficientes.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 1.4 Método del punto fijo -->
+      <article id="punto-fijo">
+        <h3>1.4 Método del punto fijo</h3>
+        <p>
+          Consiste en transformar una ecuación de la forma \(x = g(x)\), iterando sucesivamente hasta alcanzar una solución estable, llamada punto fijo. Es clave verificar que la función cumpla con condiciones de convergencia (por ejemplo, \(|g'(x)| < 1\)) para garantizar resultados válidos.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver pasos del algoritmo</summary>
+          <div class="content">
+            <ol>
+              <li>Elige una aproximación inicial \(x^{(0)}\).</li>
+              <li>Itera \(x^{(k+1)} = g(x^{(k)})\) mientras \(|x^{(k+1)} - x^{(k)}|\) sea mayor al tolerancia.</li>
+              <li>Detén cuando la diferencia sea menor a la tolerancia deseada.</li>
+            </ol>
+          </div>
+        </details>
+      </article>
+
+      <!-- 1.5 Método de Newton para sistemas no lineales -->
+      <article id="newton-sistemas">
+        <h3>1.5 Método de Newton para sistemas no lineales</h3>
+        <p>
+          El método de Newton permite resolver sistemas de ecuaciones no lineales mediante la linealización local del sistema alrededor de una aproximación inicial, actualizando iterativamente las soluciones hasta converger al resultado correcto.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver derivación e implementación</summary>
+          <div class="content">
+            <p>
+              Para un sistema \(F(\mathbf{x}) = \mathbf{0}\), se define la actualización:
+              \(\mathbf{x}^{(k+1)} = \mathbf{x}^{(k)} - J_F^{-1}(\mathbf{x}^{(k)}) F(\mathbf{x}^{(k)})\),
+              donde \(J_F\) es la matriz jacobiana de \(F\).
+            </p>
+            <p>
+              Cada iteración requiere resolver \(J_F(\mathbf{x}^{(k)}) \Delta \mathbf{x}^{(k)} = -F(\mathbf{x}^{(k)})\) para obtener \(\Delta \mathbf{x}^{(k)}\).
+            </p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <!-- 2. Modelos Clásicos de Regresión -->
+    <section id="regresion">
+      <h2>2. Modelos Clásicos de Regresión</h2>
+
+      <!-- 2.1 Regresión lineal simple -->
+      <article id="regresion-lineal-simple">
+        <h3>2.1 Regresión lineal simple: caso del consumo eléctrico</h3>
+        <p>
+          La regresión lineal simple modela una relación directa entre una variable independiente (p. ej., tiempo) y una dependiente (consumo eléctrico), permitiendo estimar valores futuros o analizar tendencias.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver fórmula y ajuste</summary>
+          <div class="content">
+            <p>
+              Dado un conjunto de datos \((x_i,y_i)\), se calcula
+              \(\beta_1 = \frac{\sum_i (x_i - \bar{x})(y_i - \bar{y})}{\sum_i (x_i - \bar{x})^2}\) y 
+              \(\beta_0 = \bar{y} - \beta_1 \bar{x}\).
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.2 Regresión lineal múltiple -->
+      <article id="regresion-lineal-multiple">
+        <h3>2.2 Regresión lineal múltiple: mejora con variables adicionales</h3>
+        <p>
+          La regresión múltiple utiliza varias variables independientes (como población, temperatura, PIB) para mejorar la precisión del modelo predictivo respecto al consumo eléctrico, identificando factores que significativamente influyen en la predicción.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver modelo matricial</summary>
+          <div class="content">
+            <p>
+              Se escribe \(\hat{\mathbf{y}} = X \boldsymbol{\beta}\), donde \(X\) es la matriz de diseño (con columna de unos para el sesgo), y se obtiene 
+              \(\boldsymbol{\beta} = (X^T X)^{-1} X^T \mathbf{y}\).
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.3 Regresión logística -->
+      <article id="regresion-logistica">
+        <h3>2.3 Regresión logística: predicción de categorías</h3>
+        <p>
+          La regresión logística predice resultados categóricos (binarios o múltiples) calculando probabilidades, especialmente útil en clasificación como detección de enfermedades o análisis de mercado.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver función logística</summary>
+          <div class="content">
+            <p>
+              La probabilidad se modela como 
+              \(p(\mathbf{x}) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 x_1 + \dots + \beta_p x_p)}}\). La estimación de \(\boldsymbol{\beta}\) se obtiene maximizando la verosimilitud.
+            </p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <!-- 3. Redes Neuronales -->
+    <section id="redes">
+      <h2>3. Redes Neuronales</h2>
+
+      <!-- 3.1 Fundamentos del perceptrón simple -->
+      <article id="perceptron-simple">
+        <h3>3.1 Fundamentos del perceptrón simple</h3>
+        <p>
+          El perceptrón simple es una unidad básica que realiza clasificaciones binarias, ajustando sus pesos según los errores en predicciones anteriores mediante un umbral de activación.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver ejemplo completo</summary>
+          <div class="content">
+            <p>
+              Supongamos dos entradas \(x_1, x_2\) y pesos \(w_1, w_2\). La salida es:
+              \[
+                y = 
+                \begin{cases}
+                  1, & \text{si } w_1 x_1 + w_2 x_2 \ge \theta, \\
+                  0, & \text{en otro caso}.
+                \end{cases}
+              \]
+            </p>
+            <p>Para corregir el error \(e = y_{\text{verdadero}} - y\), actualizamos:</p>
+            <p>\(w_i \leftarrow w_i + \eta \, e \, x_i\), donde \(\eta\) es la tasa de aprendizaje.</p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.2 Implementación del perceptrón multicapa (MLP) -->
+      <article id="mlp">
+        <h3>3.2 Implementación del perceptrón multicapa (MLP)</h3>
+        <p>
+          El perceptrón multicapa extiende el modelo básico añadiendo capas ocultas, permitiendo aprender relaciones complejas no lineales. Utiliza funciones de activación no lineales para mejorar su capacidad predictiva.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver diagrama y pseudocódigo</summary>
+          <div class="content">
+            <p>
+              Un MLP con una capa oculta y una capa de salida puede expresarse como:
+              \[
+                \mathbf{h} = \sigma(W^{(1)} \mathbf{x} + \mathbf{b}^{(1)}), \quad
+                \hat{\mathbf{y}} = \phi(W^{(2)} \mathbf{h} + \mathbf{b}^{(2)}),
+              \]
+              donde \(\sigma\) y \(\phi\) son funciones de activación (por ejemplo, ReLU, sigmoid) en cada capa.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.3 Entrenamiento y ajuste de pesos -->
+      <article id="entrenamiento">
+        <h3>3.3 Entrenamiento y ajuste de pesos</h3>
+        <p>
+          El entrenamiento del MLP emplea algoritmos como backpropagation, que ajusta iterativamente los pesos minimizando la diferencia entre las salidas predichas y reales.
+        </p>
+        <details>
+          <summary class="summary-btn">Ver pasos de backpropagation</summary>
+          <div class="content">
+            <ol>
+              <li>Propagación hacia adelante: calcular activaciones capa por capa.</li>
+              <li>Calcular error en la capa de salida y derivadas parciales.</li>
+              <li>Propagar el error hacia atrás usando la regla de la cadena para actualizar pesos:</li>
+            </ol>
+            <p>\(\Delta W^{(l)} = -\eta \, \delta^{(l)} (\mathbf{a}^{(l-1)})^T\), donde \(\delta^{(l)}\) es la señal de error de la capa \(l\).</p>
+          </div>
+        </details>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 — Manual de Métodos Numéricos y Machine Learning</p>
+  </footer>
+
+  <!-- Enlazar script para secciones colapsables -->
+  <script src="js/main.js"></script>
+</body>
+</html>
