@@ -1,6 +1,6 @@
 // main.js
 document.addEventListener("DOMContentLoaded", function () {
-  // Si se emplean botones con clase .collapsible (en lugar de <details>)
+  // Si se emplean botones con clase .collapsible en lugar de <details>
   var toggles = document.getElementsByClassName("collapsible");
   for (var i = 0; i < toggles.length; i++) {
     toggles[i].addEventListener("click", function () {
