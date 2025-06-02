@@ -18,7 +18,7 @@
     <h1>Manual de Métodos Numéricos Aplicados A Machine Learning</h1>
     <nav>
       <ul>
-        <li><a href="#introduccion">Introduccion </a></li>
+        <li><a href="#introduccion">Introducción </a></li>
         <li><a href="#fundamentos">1. Fundamentos Matemáticos</a></li>
         <li><a href="#regresion">2. Modelos Clásicos de Regresión</a></li>
         <li><a href="#redes">3. Redes Neuronales</a></li>
@@ -27,6 +27,17 @@
   </header>
 
   <main>
+    <!-- Introducción -->
+    <section id="introduccion">
+      <h2>Introducción</h2>
+      <p>
+        Se esta desarrollando una revolucion que promete generar riqueza y desigualdad como nunca antes. Son pocos los paises(o empresas) en el mundo que tienen la capacidad de desarrollar modelos masivos de inteligencia artificial. 
+        Este manual pretende ser una guía de iniciación al aprendizaje de maquinas (Machine Learning). Aprenderemos a generar sistemas que utilizar funciones matemáticas
+      </p>
+      <p>
+        Cada sección incluye explicaciones teóricas, ejemplos y fórmulas clave, facilitando la comprensión y aplicación de los métodos en problemas reales.
+      </p>
+    </section>
     <!-- 1. Fundamentos Matemáticos -->
     <section id="fundamentos">
       <h2>1. Fundamentos Matemáticos y Métodos Auxiliares</h2>
@@ -189,4 +200,283 @@
         <p>
           La regresión lineal simple modela una relación directa entre una variable independiente (por ejemplo, tiempo) y una dependiente (consumo eléctrico), permitiendo estimar valores futuros o analizar tendencias. :contentReference[oaicite:10]{index=10}
         </p>
-        <deta
+        <details>
+          <summary class="summary-btn">Ver fórmula y análisis de residuos</summary>
+          <div class="content">
+            <p>
+              La fórmula es:
+              \[
+                \hat{y} = \beta_0 + \beta_1 x,
+              \]
+              donde \(\hat{y}\) es el consumo estimado, \(x\) el tiempo, y \(\beta_0\) y \(\beta_1\) los coeficientes a determinar.
+            </p>
+            <p>
+              El análisis de residuos verifica la calidad del ajuste:
+              \begin{itemize}
+                <li>Residuo = Valor real - Valor ajustado.</li>
+                <li>Graficar residuos ayuda a identificar patrones no capturados por el modelo.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.2 Regresión lineal múltiple -->
+      <article id="regresion-lineal-multiple">
+        <h3>2.2 Regresión lineal múltiple: predicción de precios de vivienda</h3>
+        <p>
+          La regresión lineal múltiple extiende la anterior incluyendo más variables independientes, ajustándose a relaciones más complejas. Es crucial en econometría y análisis predictivo. :contentReference[oaicite:11]{index=11}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver fórmula y selección de variables</summary>
+          <div class="content">
+            <p>
+              La fórmula general es:
+              \[
+                \hat{y} = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \dots + \beta_n x_n,
+              \]
+              donde cada \(x_i\) es una variable independiente.
+            </p>
+            <p>
+              La selección de variables es esencial:
+              \begin{itemize}
+                <li>Incluir solo variables relevantes para evitar sobreajuste.</li>
+                <li>Usar criterios como AIC o BIC para evaluar modelos.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.3 Regresión polinómica -->
+      <article id="regresion-polinomica">
+        <h3>2.3 Regresión polinómica: ajuste de curvas</h3>
+        <p>
+          La regresión polinómica ajusta un polinomio a los datos, siendo útil en relaciones no lineales. Se debe tener cuidado con el sobreajuste al usar polinomios de alto grado. :contentReference[oaicite:12]{index=12}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver fórmula y ejemplos prácticos</summary>
+          <div class="content">
+            <p>
+              La fórmula es:
+              \[
+                \hat{y} = \beta_0 + \beta_1 x + \beta_2 x^2 + \dots + \beta_n x^n,
+              \]
+              donde los \(\beta_i\) son los coeficientes del polinomio.
+            </p>
+            <p>
+              Ejemplo práctico:
+              \begin{itemize}
+                <li>Datos de ventas en función del tiempo.</li>
+                <li>Un modelo cuadrático puede capturar tendencias mejor que uno lineal.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.4 Regresión por mínimos cuadrados -->
+      <article id="regresion-minimos-cuadrados">
+        <h3>2.4 Regresión por mínimos cuadrados: fundamentos y geometría</h3>
+        <p>
+          Este método encuentra la línea que minimiza la suma de los cuadrados de las diferencias verticales entre los puntos de datos y la línea. Es fundamental en estadística y aprendizaje automático. :contentReference[oaicite:13]{index=13}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver derivación y propiedades</summary>
+          <div class="content">
+            <p>
+              La línea de regresión se obtiene minimizando:
+              \[
+                \sum_{i=1}^{n} (y_i - \hat{y}_i)^2,
+              \]
+              donde \(y_i\) son los valores reales y \(\hat{y}_i\) los ajustados.
+            </p>
+            <p>
+              Propiedades:
+              \begin{itemize}
+                <li>La línea pasa por el promedio de \(x\) y \(y\).</li>
+                <li>Minimiza la varianza de los residuos.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 2.5 Regresión ridge y lasso -->
+      <article id="regresion-ridge-lasso">
+        <h3>2.5 Regresión ridge y lasso: regularización de modelos</h3>
+        <p>
+          Estas técnicas añaden un término de penalización a la función de costo, ayudando a evitar el sobreajuste y mejorando la generalización del modelo. :contentReference[oaicite:14]{index=14}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver fórmulas y comparación</summary>
+          <div class="content">
+            <p>
+              Ridge:
+              \[
+                \hat{\beta}^{ridge} = \arg\min_{\beta} \sum_{i=1}^{n} (y_i - x_i^T \beta)^2 + \lambda \lVert \beta \rVert_2^2,
+              \]
+            </p>
+            <p>
+              Lasso:
+              \[
+                \hat{\beta}^{lasso} = \arg\min_{\beta} \sum_{i=1}^{n} (y_i - x_i^T \beta)^2 + \lambda \lVert \beta \rVert_1,
+              \]
+            </p>
+            <p>
+              Comparativa:
+              \begin{itemize}
+                <li>Ridge utiliza norma \(L2\) y Lasso norma \(L1\).</li>
+                <li>Lasso puede reducir algunos coeficientes a cero, actuando como un selector de variables.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+    </section>
+
+    <!-- 3. Redes Neuronales -->
+    <section id="redes">
+      <h2>3. Redes Neuronales</h2>
+
+      <!-- 3.1 Perceptrón: la neurona artificial -->
+      <article id="perceptron">
+        <h3>3.1 Perceptrón: la neurona artificial</h3>
+        <p>
+          El perceptrón es la unidad básica de una red neuronal, simulando el funcionamiento de una neurona biológica. Aprende ajustando sus pesos sinápticos mediante el algoritmo de retropropagación del error. :contentReference[oaicite:15]{index=15}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver estructura y función</summary>
+          <div class="content">
+            <p>
+              Estructura:
+              \begin{itemize}
+                <li>Entradas \(x_i\), cada una con un peso \(w_i\).</li>
+                <li>Función de activación \(\phi\), típicamente una escalón o sigmoide.</li>
+              </itemize}
+            </p>
+            <p>
+              Función:
+              \[
+                y = \phi\biggl(\sum_{i} w_i x_i + b\biggr),
+              \]
+              donde \(b\) es el sesgo.
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.2 Arquitectura de una red neuronal -->
+      <article id="arquitectura-red">
+        <h3>3.2 Arquitectura de una red neuronal</h3>
+        <p>
+          Las redes neuronales constan de capas de neuronas: entrada, ocultas y salida. La profundidad y ancho de la red afectan su capacidad de aprendizaje y generalización. :contentReference[oaicite:16]{index=16}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver tipos de capas y funciones de activación</summary>
+          <div class="content">
+            <p>
+              Tipos de capas:
+              \begin{itemize}
+                <li>Entrada: recibe las señales externas.</li>
+                <li>Ocultas: procesan la información, pueden ser varias.</li>
+                <li>Salida: entrega el resultado final.</li>
+              </itemize}
+            </p>
+            <p>
+              Funciones de activación:
+              \begin{itemize}
+                <li>Escalón, sigmoide, tangente hiperbólica, ReLU, entre otras.</li>
+                <li>Eligen la salida de cada neurona basada en la suma ponderada de entradas.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.3 Aprendizaje en redes neuronales -->
+      <article id="aprendizaje-redes">
+        <h3>3.3 Aprendizaje en redes neuronales</h3>
+        <p>
+          El aprendizaje consiste en ajustar los pesos y sesgos de la red minimizando el error entre la salida esperada y la obtenida. Se utiliza el algoritmo de retropropagación para actualizar los pesos en función del error. :contentReference[oaicite:17]{index=17}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver algoritmo de retropropagación</summary>
+          <div class="content">
+            <p>
+              El algoritmo de retropropagación consta de los siguientes pasos:
+              \begin{enumerate}
+                <li>Propagación hacia adelante: calcular la salida de la red.</li>
+                <li>Cálculo del error: comparar la salida con la esperada.</li>
+                <li>Retropropagación del error: ajustar los pesos y sesgos.</li>
+                <li>Repetir hasta minimizar el error.</li>
+              </enumerate}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.4 Redes neuronales convolucionales (CNN) -->
+      <article id="redes-convolucionales">
+        <h3>3.4 Redes neuronales convolucionales (CNN)</h3>
+        <p>
+          Las CNN son una clase de redes neuronales diseñadas para procesar datos con una estructura de cuadrícula, como imágenes. Utilizan capas convolucionales que aplican filtros a las entradas, detectando características locales. :contentReference[oaicite:18]{index=18}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver capas convolucionales y de agrupamiento</summary>
+          <div class="content">
+            <p>
+              Capas convolucionales:
+              \begin{itemize}
+                <li>Aplican convoluciones a las entradas, extrayendo características.</li>
+                <li>Usan filtros que se ajustan durante el entrenamiento.</li>
+              </itemize}
+            </p>
+            <p>
+              Capas de agrupamiento:
+              \begin{itemize}
+                <li>Reducen la dimensionalidad de las representaciones.</li>
+                <li>Max pooling y average pooling son las más comunes.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+
+      <!-- 3.5 Redes neuronales recurrentes (RNN) -->
+      <article id="redes-recurrentes">
+        <h3>3.5 Redes neuronales recurrentes (RNN)</h3>
+        <p>
+          Las RNN son adecuadas para datos secuenciales o temporales, ya que tienen conexiones recurrentes que les permiten mantener información en el tiempo. Son útiles en traducción automática, reconocimiento de voz, entre otros. :contentReference[oaicite:19]{index=19}
+        </p>
+        <details>
+          <summary class="summary-btn">Ver arquitectura y aplicaciones</summary>
+          <div class="content">
+            <p>
+              Arquitectura:
+              \begin{itemize}
+                <li>Neuronas con conexiones hacia adelante y hacia atrás.</li>
+                <li>Estado oculto que captura información pasada.</li>
+              </itemize}
+            </p>
+            <p>
+              Aplicaciones:
+              \begin{itemize}
+                <li>Predicción de series temporales.</li>
+                <li>Generación de texto.</li>
+                <li>Modelado de lenguaje.</li>
+              </itemize}
+            </p>
+          </div>
+        </details>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Manual de Métodos Numéricos y Machine Learning - Elaborado por [Su Nombre] - Fecha
+    </p>
+  </footer>
+</body>
+</html>
