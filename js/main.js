@@ -13,4 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  var toggleNav = document.getElementById("toggle-nav");
+  var sidebar = document.getElementById("sidebar");
+  if (toggleNav && sidebar) {
+    toggleNav.addEventListener("click", function () {
+      sidebar.classList.toggle("show");
+    });
+  }
 });
